@@ -1,0 +1,15 @@
+config NEMU_LINK_FULL_SCAN
+	bool "nemu-link full frequency scan"
+	depends on ZMK_DYNAMIC_SETTINGS
+	depends on ZMK_NEMU_LINK_CHANNEL_SCAN
+	depends on BOARD_NEMU_LINK_DONGLE
+	default y
+
+if NEMU_LINK_FULL_SCAN
+
+config NEMU_LINK_FULL_SCAN_DURATION_MS
+	int "Full scan duration in milliseconds"
+	range 1000 60000
+	default 10000
+
+endif

@@ -1,0 +1,120 @@
+/* SPDX-License-Identifier: MIT */
+#define NEMU_LINK_SCAN_CHANNEL(n, setting_value, label_value) \
+		channel_##n: channel_##n { \
+			compatible = "sekigon,dynamic-setting"; \
+			setting-name = setting_value; \
+			label = label_value; \
+			value-type = "u32"; \
+			default-int = <0>; \
+			read-only; \
+			volatile; \
+		};
+
+/ {
+	nemu_link_full_scan: nemu_link_full_scan {
+		compatible = "sekigon,dynamic-settings-group";
+		module-name = "nemu-link-scan";
+		group-name = "full-band";
+		instance-name = "dongle";
+		label = "Nemu-link full-band scan";
+		scope = "local";
+		format-version = <1>;
+		target-role = "nemu-link";
+		actual-device = <&kscan0>;
+		runtime-read-provider = "nemu_link_scan_read";
+
+		scan: scan {
+			compatible = "sekigon,dynamic-setting";
+			setting-name = "scan";
+			label = "スキャン開始";
+			value-type = "bool";
+			default-bool = <0>;
+			widget = "button";
+			on-change = "nemu_link_scan_command_changed";
+		};
+
+		/* BLE advertising channels (0..39) plus 40 data channels (40..79). */
+		NEMU_LINK_SCAN_CHANNEL(0, "channel-0", "ch 0")
+		NEMU_LINK_SCAN_CHANNEL(1, "channel-1", "ch 1")
+		NEMU_LINK_SCAN_CHANNEL(2, "channel-2", "ch 2")
+		NEMU_LINK_SCAN_CHANNEL(3, "channel-3", "ch 3")
+		NEMU_LINK_SCAN_CHANNEL(4, "channel-4", "ch 4")
+		NEMU_LINK_SCAN_CHANNEL(5, "channel-5", "ch 5")
+		NEMU_LINK_SCAN_CHANNEL(6, "channel-6", "ch 6")
+		NEMU_LINK_SCAN_CHANNEL(7, "channel-7", "ch 7")
+		NEMU_LINK_SCAN_CHANNEL(8, "channel-8", "ch 8")
+		NEMU_LINK_SCAN_CHANNEL(9, "channel-9", "ch 9")
+		NEMU_LINK_SCAN_CHANNEL(10, "channel-10", "ch 10")
+		NEMU_LINK_SCAN_CHANNEL(11, "channel-11", "ch 11")
+		NEMU_LINK_SCAN_CHANNEL(12, "channel-12", "ch 12")
+		NEMU_LINK_SCAN_CHANNEL(13, "channel-13", "ch 13")
+		NEMU_LINK_SCAN_CHANNEL(14, "channel-14", "ch 14")
+		NEMU_LINK_SCAN_CHANNEL(15, "channel-15", "ch 15")
+		NEMU_LINK_SCAN_CHANNEL(16, "channel-16", "ch 16")
+		NEMU_LINK_SCAN_CHANNEL(17, "channel-17", "ch 17")
+		NEMU_LINK_SCAN_CHANNEL(18, "channel-18", "ch 18")
+		NEMU_LINK_SCAN_CHANNEL(19, "channel-19", "ch 19")
+		NEMU_LINK_SCAN_CHANNEL(20, "channel-20", "ch 20")
+		NEMU_LINK_SCAN_CHANNEL(21, "channel-21", "ch 21")
+		NEMU_LINK_SCAN_CHANNEL(22, "channel-22", "ch 22")
+		NEMU_LINK_SCAN_CHANNEL(23, "channel-23", "ch 23")
+		NEMU_LINK_SCAN_CHANNEL(24, "channel-24", "ch 24")
+		NEMU_LINK_SCAN_CHANNEL(25, "channel-25", "ch 25")
+		NEMU_LINK_SCAN_CHANNEL(26, "channel-26", "ch 26")
+		NEMU_LINK_SCAN_CHANNEL(27, "channel-27", "ch 27")
+		NEMU_LINK_SCAN_CHANNEL(28, "channel-28", "ch 28")
+		NEMU_LINK_SCAN_CHANNEL(29, "channel-29", "ch 29")
+		NEMU_LINK_SCAN_CHANNEL(30, "channel-30", "ch 30")
+		NEMU_LINK_SCAN_CHANNEL(31, "channel-31", "ch 31")
+		NEMU_LINK_SCAN_CHANNEL(32, "channel-32", "ch 32")
+		NEMU_LINK_SCAN_CHANNEL(33, "channel-33", "ch 33")
+		NEMU_LINK_SCAN_CHANNEL(34, "channel-34", "ch 34")
+		NEMU_LINK_SCAN_CHANNEL(35, "channel-35", "ch 35")
+		NEMU_LINK_SCAN_CHANNEL(36, "channel-36", "ch 36")
+		NEMU_LINK_SCAN_CHANNEL(37, "channel-37", "ch 37")
+		NEMU_LINK_SCAN_CHANNEL(38, "channel-38", "ch 38")
+		NEMU_LINK_SCAN_CHANNEL(39, "channel-39", "ch 39")
+		NEMU_LINK_SCAN_CHANNEL(40, "channel-40", "ch 40")
+		NEMU_LINK_SCAN_CHANNEL(41, "channel-41", "ch 41")
+		NEMU_LINK_SCAN_CHANNEL(42, "channel-42", "ch 42")
+		NEMU_LINK_SCAN_CHANNEL(43, "channel-43", "ch 43")
+		NEMU_LINK_SCAN_CHANNEL(44, "channel-44", "ch 44")
+		NEMU_LINK_SCAN_CHANNEL(45, "channel-45", "ch 45")
+		NEMU_LINK_SCAN_CHANNEL(46, "channel-46", "ch 46")
+		NEMU_LINK_SCAN_CHANNEL(47, "channel-47", "ch 47")
+		NEMU_LINK_SCAN_CHANNEL(48, "channel-48", "ch 48")
+		NEMU_LINK_SCAN_CHANNEL(49, "channel-49", "ch 49")
+		NEMU_LINK_SCAN_CHANNEL(50, "channel-50", "ch 50")
+		NEMU_LINK_SCAN_CHANNEL(51, "channel-51", "ch 51")
+		NEMU_LINK_SCAN_CHANNEL(52, "channel-52", "ch 52")
+		NEMU_LINK_SCAN_CHANNEL(53, "channel-53", "ch 53")
+		NEMU_LINK_SCAN_CHANNEL(54, "channel-54", "ch 54")
+		NEMU_LINK_SCAN_CHANNEL(55, "channel-55", "ch 55")
+		NEMU_LINK_SCAN_CHANNEL(56, "channel-56", "ch 56")
+		NEMU_LINK_SCAN_CHANNEL(57, "channel-57", "ch 57")
+		NEMU_LINK_SCAN_CHANNEL(58, "channel-58", "ch 58")
+		NEMU_LINK_SCAN_CHANNEL(59, "channel-59", "ch 59")
+		NEMU_LINK_SCAN_CHANNEL(60, "channel-60", "ch 60")
+		NEMU_LINK_SCAN_CHANNEL(61, "channel-61", "ch 61")
+		NEMU_LINK_SCAN_CHANNEL(62, "channel-62", "ch 62")
+		NEMU_LINK_SCAN_CHANNEL(63, "channel-63", "ch 63")
+		NEMU_LINK_SCAN_CHANNEL(64, "channel-64", "ch 64")
+		NEMU_LINK_SCAN_CHANNEL(65, "channel-65", "ch 65")
+		NEMU_LINK_SCAN_CHANNEL(66, "channel-66", "ch 66")
+		NEMU_LINK_SCAN_CHANNEL(67, "channel-67", "ch 67")
+		NEMU_LINK_SCAN_CHANNEL(68, "channel-68", "ch 68")
+		NEMU_LINK_SCAN_CHANNEL(69, "channel-69", "ch 69")
+		NEMU_LINK_SCAN_CHANNEL(70, "channel-70", "ch 70")
+		NEMU_LINK_SCAN_CHANNEL(71, "channel-71", "ch 71")
+		NEMU_LINK_SCAN_CHANNEL(72, "channel-72", "ch 72")
+		NEMU_LINK_SCAN_CHANNEL(73, "channel-73", "ch 73")
+		NEMU_LINK_SCAN_CHANNEL(74, "channel-74", "ch 74")
+		NEMU_LINK_SCAN_CHANNEL(75, "channel-75", "ch 75")
+		NEMU_LINK_SCAN_CHANNEL(76, "channel-76", "ch 76")
+		NEMU_LINK_SCAN_CHANNEL(77, "channel-77", "ch 77")
+		NEMU_LINK_SCAN_CHANNEL(78, "channel-78", "ch 78")
+		NEMU_LINK_SCAN_CHANNEL(79, "channel-79", "ch 79")
+	};
+};
+
+#undef NEMU_LINK_SCAN_CHANNEL

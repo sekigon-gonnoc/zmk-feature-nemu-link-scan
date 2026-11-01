@@ -1,0 +1,6 @@
+name: zmk-feature-nemu-link-scan
+build:
+  cmake: .
+  kconfig: Kconfig
+  settings:
+    dts_root: .

@@ -1,0 +1,8 @@
+if(CONFIG_ZMK_DYNAMIC_SETTINGS)
+  zephyr_library()
+  if(CONFIG_NEMU_LINK_FULL_SCAN)
+    zephyr_library_sources(src/full_scan.c)
+  else()
+    zephyr_library_sources(src/full_scan_stub.c)
+  endif()
+endif()
